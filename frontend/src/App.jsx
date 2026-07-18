@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './Login'; 
 import Home from './Home'; 
 import Cart from './Cart';  
-import { CartProvider } from './context/CartContext'; 
+import { CartProvider } from './context/Cartcontext'; 
 import Admin from './Admin';
 
 // 🔒 1. සාමාන්‍ය යූසර්ලා ලොගින් නොවී /home හෝ /cart යන එක නවත්වන Route එක
