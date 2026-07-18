@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'; // 👈 useState එකතු කරා
-import { CartContext } from './context/TempCart'; 
+import { CartContext } from './context/Cartcontext'; 
 import { useNavigate } from 'react-router-dom';
 import Checkout from './Checkout'; // 👈 අලුත් Checkout එක Import කරා
 import './Cart.css'; 
