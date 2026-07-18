@@ -1,0 +1,21 @@
+/* 🌍 මුළු පේජ් එකේම පසුබිම කළු කරලා, අකුරු සුදු කරන ක්ලාස් එක */
+.app-container {
+  background-color: #090707;
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+/* 🚀 ප්‍රධාන මාතෘකාව සඳහා */
+.main-title {
+  color: #3b82f6; /* ලස්සන නිල් පාටක් */
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 📝 විස්තර ලියන පැරග්‍රාෆ් එක සඳහා */
+.description-text {
+  color: #a1a1aa;
+  font-size: 1.1rem;
+}
