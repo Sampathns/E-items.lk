@@ -77,7 +77,7 @@ export default function Admin() {
   const handleDelete = async (id) => {
     if (window.confirm('මචන්, මේක ඇත්තටම Delete කරන්නද ඕනේ? ⚠️')) {
       try {
-        await axios.delete(`http://localhost:5000/api/products/${id}`);
+        await axios.delete(`https://e-items-lk.onrender.com/api/products/${id}`);
         alert('Product deleted! 🗑️');
         fetchProducts();
       } catch (error) {

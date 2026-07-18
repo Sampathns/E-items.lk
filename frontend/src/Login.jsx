@@ -18,7 +18,7 @@ export default function Login() {
     e.preventDefault();
     try{
     if (isLogin) {
-        const response = await axios.post('http://localhost:5000/api/users/login',{
+        const response = await axios.post('https://e-items-lk.onrender.com/api/users/login',{
         email,password
       });
       localStorage.setItem('userInfo',JSON.stringify(response.data));
@@ -26,7 +26,7 @@ export default function Login() {
 
       console.log("Login success details:",response.data);
     } else {
-      const response = await axios.post('http://localhost:5000/api/users/register',{
+      const response = await axios.post('https://e-items-lk.onrender.com/api/users/register',{
         name,
         email,
         password

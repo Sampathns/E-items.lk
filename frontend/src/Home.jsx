@@ -16,10 +16,10 @@ export default function Home() {
 
   const { cartItems, addToCart } = useContext(CartContext);
 
-  // Categories ටික
+ 
   const categories = ['All', 'Headphones', 'Laptops', 'Phones', 'Accessories'];
 
-  // ලොග් අවුට් ෆන්ක්ෂන් එක
+  
   const handleLogout = () => {
     localStorage.removeItem('userInfo');
     window.location.href = '/';
@@ -28,7 +28,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products');
+        const response = await axios.get('https://e-items-lk.onrender.com/api/products');
         setProducts(response.data);
         setFilteredProducts(response.data);
         setLoading(false);
@@ -40,7 +40,7 @@ export default function Home() {
     fetchProducts();
   }, []);
 
-  // Search සහ Category Filter එක එකට වැඩ කරන හැටි
+ 
   useEffect(() => {
     let result = products;
 
@@ -60,13 +60,13 @@ export default function Home() {
   return (
     <div className="home-wrapper">
       
-      {/* 🧭 1. Premium Glassmorphic Navigation Bar */}
+      
       <nav className="navbar">
         <div className="nav-logo" onClick={() => navigate('/home')}>
           E-items<span>.lk</span>
         </div>
 
-        {/* 🔍 Search Bar */}
+       
         <div className="nav-search-container">
           <input 
             type="text" 
