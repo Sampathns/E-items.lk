@@ -1,4 +1,6 @@
-# Logs
+git add .
+git commit -m "Fix backend folder structure"
+git push origin main --force# Logs
 logs
 *.log
 npm-debug.log*
