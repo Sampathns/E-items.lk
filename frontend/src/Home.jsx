@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Home.css'; 
 import axios from 'axios';
-import { CartContext } from './context/CartContext';
+import { CartContext } from './context/TempCart';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {

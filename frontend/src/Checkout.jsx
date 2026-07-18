@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { CartContext } from './context/CartContext'; // 👈 ඔයාගේ context පාත් එකට ගැලපෙන්න බලන්න
+import { CartContext } from './context/TempCart'; // 👈 ඔයාගේ context පාත් එකට ගැලපෙන්න බලන්න
 
 export default function Checkout({ grandTotal, onCancel }) {
   const { cartItems, clearCart } = useContext(CartContext); // clearCart එකක් context එකේ නැත්නම් හදාගන්න වෙයි
