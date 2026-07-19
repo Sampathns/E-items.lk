@@ -15,21 +15,19 @@ const addOrderItems = async (req, res) => {
         if (items && items.length === 0) {
             return res.status(400).json({ message: 'No order items' });
         } else {
-            // 1. Frontend items ටික Backend Schema එකට ගැලපෙන්න හදාගන්නවා
             const mappedOrderItems = items.map(item => ({
                 name: item.name,
                 qty: item.qty,
                 price: item.price,
-                image: item.image || '/images/default.jpg', // Schema එකට image එකක් ඕන නිසා default එකක් දානවා
-                product: item.productId // 👈 Schema එක ඉල්ලන 'product' එකට 'productId' එක දානවා
+                image: item.image || '/images/default.jpg', 
+                product: item.productId 
             }));
 
-            // 2. Shipping Address එක Schema එක ඉල්ලන විදිහට හදාගන්නවා
             const mappedShippingAddress = {
                 address: customerDetails.address,
                 city: customerDetails.city,
-                postalCode: customerDetails.postalCode || '81000', // 👈 Schema එකට postalCode ඕන නිසා default එකක්
-                country: customerDetails.country || 'Sri Lanka'     // 👈 Schema එකට country ඕන නිසා default එකක්
+                postalCode: customerDetails.postalCode || '81000', 
+                country: customerDetails.country || 'Sri Lanka'     
             };
 
             const order = new Order({
@@ -47,6 +45,16 @@ const addOrderItems = async (req, res) => {
         console.error("Backend Error Detail:", err);
         res.status(500).json({ message: err.message });
     }
+};
+
+// ➔ මෙන්න මේ ෆන්ක්ෂන් එකයි කලින් හැලුණේ මචන්:
+const getMyOrders = async (req, res) => {
+   try {
+     const orders = await Order.find({ user: req.params.userId });
+     res.json(orders);
+   } catch(err) {
+     res.status(500).json({ message: err.message });
+   }
 };
 
 module.exports = {
