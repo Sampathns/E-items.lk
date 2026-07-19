@@ -2,12 +2,14 @@ const Order = require('../models/Order');
 
 const addOrderItems = async (req,res) => {
     try{
+        console.log("Incoming Data From Frontend:", req.body); // 👈 මේ පේළිය විතරක් ඇතුළත් කරන්න
+        
         const{
            orderItems,
-            shippingAddress,
-            paymentMethod,
-            totalPrice,
-            userId 
+           shippingAddress,
+           paymentMethod,
+           totalPrice,
+           userId 
         } = req.body;
         
         if (orderItems && orderItems.length === 0){
