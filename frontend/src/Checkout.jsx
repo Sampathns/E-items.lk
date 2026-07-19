@@ -42,11 +42,12 @@ export default function Checkout({ grandTotal, onCancel }) {
 
     try {
       // 🌐 මෙතනට ඔයාගේ Backend API URL එක දාන්න (உදා: http://localhost:5000/api/orders)
-      const response = await fetch('https://e-items-lk-1.onrender.com/api/orders', 
+      const response = await fetch('https://e-items-lk.onrender.com/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           
+        },
         body: JSON.stringify(orderData),
       });
 
