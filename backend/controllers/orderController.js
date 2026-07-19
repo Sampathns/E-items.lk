@@ -4,25 +4,40 @@ const addOrderItems = async (req, res) => {
     try {
         console.log("Incoming Data From Frontend:", req.body);
         
-        // 1. Frontend එකෙන් එන නියම නම් ටික Destructure කරගන්නවා
         const {
             customerDetails,
             items,
             paymentMethod,
             totalAmount,
-            userId // මේක Frontend එකෙන් ආවේ නැත්නම් undefined වෙයි
+            userId
         } = req.body;
         
         if (items && items.length === 0) {
             return res.status(400).json({ message: 'No order items' });
         } else {
-            // 2. ඔයාගේ Mongoose Order Schema එකට ගැලපෙන විදිහට Map කරලා object එක හදනවා
+            // 1. Frontend items ටික Backend Schema එකට ගැලපෙන්න හදාගන්නවා
+            const mappedOrderItems = items.map(item => ({
+                name: item.name,
+                qty: item.qty,
+                price: item.price,
+                image: item.image || '/images/default.jpg', // Schema එකට image එකක් ඕන නිසා default එකක් දානවා
+                product: item.productId // 👈 Schema එක ඉල්ලන 'product' එකට 'productId' එක දානවා
+            }));
+
+            // 2. Shipping Address එක Schema එක ඉල්ලන විදිහට හදාගන්නවා
+            const mappedShippingAddress = {
+                address: customerDetails.address,
+                city: customerDetails.city,
+                postalCode: customerDetails.postalCode || '81000', // 👈 Schema එකට postalCode ඕන නිසා default එකක්
+                country: customerDetails.country || 'Sri Lanka'     // 👈 Schema එකට country ඕන නිසා default එකක්
+            };
+
             const order = new Order({
-                user: userId || null, // userId එක නැත්නම් null හෝ Mongoose Schema එකේ required නැත්නම් විතරක් දාන්න
-                orderItems: items, // Frontend items එක Backend orderItems එකට දානවා
-                shippingAddress: customerDetails, // customerDetails එක shippingAddress එකට දානවා
+                user: userId || null, 
+                orderItems: mappedOrderItems, 
+                shippingAddress: mappedShippingAddress, 
                 paymentMethod,
-                totalPrice: totalAmount // totalAmount එක totalPrice එකට දානවා
+                totalPrice: totalAmount
             });
 
             const createdOrder = await order.save();
@@ -32,16 +47,6 @@ const addOrderItems = async (req, res) => {
         console.error("Backend Error Detail:", err);
         res.status(500).json({ message: err.message });
     }
-};
-
-const getMyOrders = async (req,res) => {
-   try {
-     const orders = await Order.find({ user: req.params.userId});
-     res.json(orders);
-
-   }catch(err){
-    res.status(500).json ({message: err.message});
-   }
 };
 
 module.exports = {
