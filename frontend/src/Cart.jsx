@@ -30,10 +30,10 @@ export default function Cart() {
         {cartItems.length === 0 ? (
           <div className="empty-cart-container">
             <div className="empty-cart-icon">🛍️</div>
-            <h3>Your cart is empty මචන්!</h3>
-            <p>මුකුත්ම නැතුව කොහොමද? ඉක්මනට ගිහින් සුපිරි ගැජට් එකක් තෝරගමු!</p>
+            <h3>Your cart is empty !</h3>
+            <p>Select a item nowww</p>
             <button onClick={() => navigate('/home')} className="shop-now-btn">
-              Shop Now 🚀
+              Shop Now 
             </button>
           </div>
         ) : (

@@ -42,7 +42,7 @@ export default function Checkout({ grandTotal, onCancel }) {
 
     try {
       // 🌐 මෙතනට ඔයාගේ Backend API URL එක දාන්න (உදා: http://localhost:5000/api/orders)
-      const response = await fetch('http://localhost:5000/api/orders', {
+      const response = await fetch('https://e-items-lk.onrender.com/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,15 +52,15 @@ export default function Checkout({ grandTotal, onCancel }) {
       });
 
       if (response.ok) {
-        alert('නියමයි මචන්! ඕඩර් එක සුපිරියටම ප්ලේස් වුණා. 🚀');
+        alert('Order Placed Sucessfully.. 🚀');
         if (clearCart) clearCart(); // ඕඩර් එක සාර්ථක නම් Cart එක හිස් කරනවා
         window.location.href = '/home'; // හෝ වෙනත් Success පේජ් එකකට යවන්න
       } else {
-        alert('අයියෝ මචන්, ඕඩර් එක දාන්න බැරි වුණා. පොඩ්ඩක් නැවත උත්සාහ කරන්න.');
+        alert('Order cancelled, Please Check again.');
       }
     } catch (error) {
       console.error("Order Error:", error);
-      alert('Backend එකට කනෙක්ට් වෙන්න බැහැ මචන්!');
+      alert('Cant connect Backend');
     } finally {
       setLoading(false);
     }
@@ -69,11 +69,11 @@ export default function Checkout({ grandTotal, onCancel }) {
   return (
     <div className="checkout-form-container">
       <h3 className="summary-title">Delivery Details 🚚</h3>
-      <p className="checkout-sub">බඩු ගෙදරටම ආවාම සල්ලි ගෙවන්න (Cash on Delivery)</p>
+      <p className="checkout-sub">Cash on Delivery  (Cash on Delivery)</p>
       
       <form onSubmit={handleSubmit} className="checkout-form">
         <div className="input-group">
-          <label>සම්පූර්ණ නම (Full Name)</label>
+          <label>Full Name (Full Name)</label>
           <input 
             type="text" 
             name="fullName" 
@@ -85,7 +85,7 @@ export default function Checkout({ grandTotal, onCancel }) {
         </div>
 
         <div className="input-group">
-          <label>දුරකථන අංකය (Phone Number)</label>
+          <label>Telephone Number (Phone Number)</label>
           <input 
             type="tel" 
             name="phone" 
@@ -97,7 +97,7 @@ export default function Checkout({ grandTotal, onCancel }) {
         </div>
 
         <div className="input-group">
-          <label>ලිපිනය (Delivery Address)</label>
+          <label>Address (Delivery Address)</label>
           <textarea 
             name="address" 
             required 
@@ -108,7 +108,7 @@ export default function Checkout({ grandTotal, onCancel }) {
         </div>
 
         <div className="input-group">
-          <label>නගරය (City)</label>
+          <label>City (City)</label>
           <input 
             type="text" 
             name="city" 
@@ -120,7 +120,7 @@ export default function Checkout({ grandTotal, onCancel }) {
         </div>
 
         <div className="input-group">
-          <label>වෙනත් සටහන් (Optional Notes)</label>
+          <label>Optional Notes (Optional Notes)</label>
           <input 
             type="text" 
             name="notes" 
