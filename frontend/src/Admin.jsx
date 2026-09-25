@@ -41,7 +41,7 @@ export default function Admin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const productData = { name, price: Number(price), image, category, countInStock: Number(countInStock), description };
-
+  
     try {
       if (editingId) {
         // Edit Product
