@@ -5,7 +5,7 @@ import Home from './Home';
 import Cart from './Cart';  
 import { CartProvider } from './context/Cartcontext';
 import Admin from './Admin';
-
+import { supabase } from './supabaseClient';
 // 🔒 1. සාමාන්‍ය යූසර්ලා ලොගින් නොවී /home හෝ /cart යන එක නවත්වන Route එක
 const ProtectedRoute = ({ children }) => {
   const rawUserInfo = localStorage.getItem('userInfo');
